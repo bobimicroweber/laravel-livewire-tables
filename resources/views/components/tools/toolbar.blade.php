@@ -10,7 +10,7 @@
 
 @if ($theme === 'tailwind')
     <div class="md:flex md:justify-between mb-4 px-4 md:p-0">
-        <div class="w-full mb-4 md:mb-0 md:w-2/4 md:flex space-y-4 md:space-y-0 md:space-x-2">
+        <div class="w-full mb-4 md:mb-0 md:w-2/4 md:flex">
             @if ($component->hasConfigurableAreaFor('toolbar-left-start'))
                 @include($component->getConfigurableAreaFor('toolbar-left-start'), $component->getParametersForConfigurableArea('toolbar-left-start'))
             @endif
@@ -56,7 +56,7 @@
                         x-on:mousedown.away="open = false"
                     @endif
 
-                    class="relative block md:inline-block text-left"
+                    class="relative block md:inline-block ml-0 md:ml-2 text-left"
                 >
                     <div>
                         <button
@@ -204,7 +204,7 @@
             @endif
 
             @if ($component->columnSelectIsEnabled())
-                <div class="mb-4 w-full md:w-auto md:mb-0 md:ml-2">
+                <div class="mb-4 w-full ml-0 md:w-auto md:mb-0 md:ml-2">
                     <div
                         x-data="{ open: false }"
                         @keydown.window.escape="open = false"
@@ -273,7 +273,7 @@
             @endif
 
             @if ($component->paginationIsEnabled() && $component->perPageVisibilityIsEnabled())
-                <div>
+                <div class="ml-0 md:ml-2">
                     <select
                         wire:model="perPage"
                         id="perPage"
