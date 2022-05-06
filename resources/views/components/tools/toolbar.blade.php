@@ -100,13 +100,13 @@
                             x-transition:leave="transition ease-in duration-75"
                             x-transition:leave-start="transform opacity-100 scale-100"
                             x-transition:leave-end="transform opacity-0 scale-95"
-                            class="origin-top-left absolute left-0 mt-2 w-full md:w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none z-50 dark:bg-gray-700 dark:text-white dark:divide-gray-600"
+                            class="origin-top-left absolute left-0 mt-2 w-full md:w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50 dark:bg-gray-700 dark:text-white"
                             role="menu"
                             aria-orientation="vertical"
                             aria-labelledby="filters-menu"
                         >
                             @foreach($component->getFilters() as $filter)
-                                <div class="py-1" role="none">
+                                <div class="py-1 {{ !$loop->last ? 'border-b border-gray-100 dark:border-gray-600' : '' }}" role="none">
                                     <div class="block px-4 py-2 text-sm text-gray-700 space-y-1" role="menuitem">
                                         <label for="{{ $component->getTableName() }}-filter-{{ $filter->getKey() }}"
                                             class="block text-sm font-medium leading-5 text-gray-700 dark:text-white">
@@ -119,7 +119,7 @@
                             @endforeach
 
                             @if ($component->hasAppliedFiltersWithValues())
-                                <div class="block px-4 py-3 text-sm text-gray-700 dark:text-white" role="menuitem">
+                                <div class="block px-4 py-3 text-sm text-gray-700 dark:text-white border-t border-gray-100" role="menuitem">
                                     <button
                                         wire:click.prevent="setFilterDefaults"
                                         x-on:click="open = false"
